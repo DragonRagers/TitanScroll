@@ -40,9 +40,14 @@ public class GameState implements State {
 	public void enter() {
 		
 	}
+	
+	public void killEntity(Entity e) {
+		boolean ch = entities.remove(e);
+		if (!ch) throw new IllegalArgumentException("Entity was not alive.");
+	}
 
 	public void tick(StateManager stateManager) {
-		for (Entity e : entities) {
+		for (Entity e : (ArrayList<Entity>) entities.clone()) {
 			e.tick();
 		}
 	}

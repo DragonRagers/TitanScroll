@@ -62,4 +62,8 @@ public abstract class Entity {
 		return new Rectangle((int)x, (int) y + sprite.getHeight() / 16, sprite.getWidth() / 16, sprite.getHeight() * 14 / 16);
 	}
 	
+	protected void die() {
+		state.killEntity(this);
+	}
+	
 }

@@ -18,8 +18,8 @@ import nguyen.connor.states.StateManager;
 public class Game extends Canvas implements Runnable {
 
 	public static final String TITLE = "TitanScroll";
-	public static final int WIDTH = 1520;
-	public static final int HEIGHT = WIDTH / 16 * 9;
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = WIDTH / 4 * 3;
 	
 	private boolean running;
 	

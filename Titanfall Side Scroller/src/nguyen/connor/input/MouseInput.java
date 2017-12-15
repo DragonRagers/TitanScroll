@@ -40,6 +40,11 @@ public class MouseInput extends MouseAdapter {
 		moving = true;
 	}
 
+	public void update(MouseEvent e) {
+		x = e.getX();
+		y = e.getY();
+	}
+	
 	public static boolean isDown(int button) {
 		return buttons[button];
 	}

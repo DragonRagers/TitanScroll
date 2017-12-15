@@ -8,13 +8,12 @@ public abstract class Mob extends Entity {
 
 	protected double dx, dy;
 	protected double maxDy;
-	protected double gravity;
+	protected static double gravity = .5;
 	protected boolean falling = true;
 	protected boolean canJump = false;
 	
 	public Mob(Sprite sprite, double x, double y, GameState state) {
 		super(sprite, x, y, state);
-		gravity = 0.5;
 		maxDy = 7;
 	}
 
