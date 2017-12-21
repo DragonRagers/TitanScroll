@@ -1,5 +1,7 @@
 package nguyen.connor.entities;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -8,14 +10,17 @@ import nguyen.connor.input.KeyInput;
 import nguyen.connor.input.MouseInput;
 import nguyen.connor.rendering.textures.Sprite;
 import nguyen.connor.states.GameState;
+import nguyen.connor.weapons.Pistol;
+import nguyen.connor.weapons.Weapon;
 
 public class Player extends Mob {
 
 	protected boolean canDoubleJump = true;
-	protected ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	protected Weapon curWeapon;
 	
 	public Player(Sprite sprite, double x, double y, GameState state) {
 		super(sprite, x, y, state);
+		curWeapon = new Pistol(this, state);
 	}
 	
 	public void tick() {
@@ -37,8 +42,8 @@ public class Player extends Mob {
 		if (KeyInput.wasReleased(KeyEvent.VK_D) || KeyInput.wasReleased(KeyEvent.VK_A)) {
 			dx = 0;
 		}
-		if (MouseInput.wasPressed(MouseEvent.BUTTON1)) {
-			shoot();
+		if (curWeapon.getType() == 0 && MouseInput.wasPressed(MouseEvent.BUTTON1)) {
+			curWeapon.shoot();
 		}
 		super.tick();
 	}
@@ -48,13 +53,6 @@ public class Player extends Mob {
 			dy = -height;
 			canDoubleJump = false;
 		}
-	}
-	
-	protected void shoot() {
-		MouseInput.update();
-		double angle = Math.atan2(y - MouseInput.getY(), x - MouseInput.getX());
-		bullets.add(new Bullet(new Sprite("player bullet"), x + sprite.getWidth(), y + sprite.getHeight()/4, angle, 40, state));
-	
 	}
 	
 }

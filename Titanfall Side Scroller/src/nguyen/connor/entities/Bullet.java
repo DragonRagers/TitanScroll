@@ -13,13 +13,13 @@ public class Bullet extends Mob {
 	
 	public Bullet(Sprite sprite, double x, double y, double angle, double speed, GameState state) {
 		super(sprite, x, y, state);
+		this.angle = angle;
 		dy = Math.sin(angle) * -speed;
 		dx = Math.cos(angle) * -speed;
 		maxDy = 50;
 	}
 	
 	public void tick() {
-		//System.out.println(x + " " + y);
 		super.move();
 		if (hasVerticalCollision() || hasHorizontalCollision()
 				|| x < 0 || x > Game.WIDTH

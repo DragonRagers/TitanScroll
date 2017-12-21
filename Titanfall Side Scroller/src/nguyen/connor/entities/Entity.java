@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import nguyen.connor.input.MouseInput;
 import nguyen.connor.rendering.textures.Sprite;
 import nguyen.connor.states.GameState;
 
@@ -27,9 +28,16 @@ public abstract class Entity {
 	
 	public void render(Graphics2D brush) {
 		sprite.render(brush, x, y);
-		drawHitBox(brush);
+		//drawHitBox(brush);
 	}
  
+	public double getX() {
+		return x;
+	}
+	public double getY() {
+		return y;
+	}
+	
 	public Rectangle getBounds() {
 		return new Rectangle((int) x, (int) y, sprite.getWidth(), sprite.getHeight());
 	}

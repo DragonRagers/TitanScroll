@@ -1,5 +1,7 @@
 package nguyen.connor.entities;
 
+import java.util.ArrayList;
+
 import nguyen.connor.rendering.textures.Sprite;
 import nguyen.connor.states.GameState;
 import nguyen.connor.world.Tile;
@@ -11,6 +13,7 @@ public abstract class Mob extends Entity {
 	protected static double gravity = .5;
 	protected boolean falling = true;
 	protected boolean canJump = false;
+	protected ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	
 	public Mob(Sprite sprite, double x, double y, GameState state) {
 		super(sprite, x, y, state);
@@ -81,6 +84,10 @@ public abstract class Mob extends Entity {
 			dy -= jumpHeight;
 			canJump = false;
 		}
+	}
+	
+	public void addBullet(Bullet b) {
+		bullets.add(b);
 	}
 
 }

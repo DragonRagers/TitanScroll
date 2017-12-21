@@ -62,6 +62,7 @@ public class Game extends Canvas implements Runnable {
 		brush.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
 		stateManager.render(brush2D);
+		brush.drawRect(MouseInput.getX(), MouseInput.getY(), 10, 10);
 		
 		brush.dispose();
 		bs.show();

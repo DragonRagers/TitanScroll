@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import nguyen.connor.Game;
 import nguyen.connor.entities.Entity;
 import nguyen.connor.entities.Player;
+import nguyen.connor.input.MouseInput;
 import nguyen.connor.rendering.textures.Sprite;
 import nguyen.connor.rendering.textures.SpriteSheet;
 import nguyen.connor.rendering.textures.Texture;

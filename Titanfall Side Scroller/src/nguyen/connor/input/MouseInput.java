@@ -35,14 +35,15 @@ public class MouseInput extends MouseAdapter {
 	}
 	
 	public void mouseMoved(MouseEvent e) {
-		x = e.getX();
-		y = e.getY();
+		x = e.getX() + 5;
+		y = e.getY() + 28;
 		moving = true;
 	}
 
-	public void update(MouseEvent e) {
-		x = e.getX();
-		y = e.getY();
+	public void mouseDragged(MouseEvent e) {
+		x = e.getX() + 5;
+		y = e.getY() + 28;
+		//System.out.println(x + " " + y);
 	}
 	
 	public static boolean isDown(int button) {
@@ -65,7 +66,7 @@ public class MouseInput extends MouseAdapter {
 		return y;
 	}
 	
-	private boolean isMoving() {
+	public static boolean isMoving() {
 		return moving;
 	}
 }
