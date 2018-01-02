@@ -17,7 +17,6 @@ public abstract class Mob extends Entity {
 	
 	public Mob(Sprite sprite, double x, double y, GameState state) {
 		super(sprite, x, y, state);
-		maxDy = 7;
 	}
 
 	public void tick() {

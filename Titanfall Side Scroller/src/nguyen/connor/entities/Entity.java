@@ -14,6 +14,8 @@ public abstract class Entity {
 	protected double x, y;
 	protected Sprite sprite;
 	protected GameState state;
+	protected double hp;
+	public boolean enemy;
 	
 	public Entity(Sprite sprite,double x, double y, GameState state) {
 		super();
@@ -53,6 +55,14 @@ public abstract class Entity {
 		brush.draw(getLeft());
 	}
 	
+	public void hit(double dmg) {
+		hp -= dmg;
+	}
+	
+	protected void die() {
+		state.killEntity(this);
+	}
+	
 	//sides
 	public Rectangle getTop() {
 		return new Rectangle((int) x  + sprite.getWidth() / 16 - 1, (int) y, sprite.getWidth() * 14 / 16, sprite.getHeight() / 16);
@@ -69,9 +79,5 @@ public abstract class Entity {
 	public Rectangle getLeft() {
 		return new Rectangle((int)x, (int) y + sprite.getHeight() / 16, sprite.getWidth() / 16, sprite.getHeight() * 14 / 16);
 	}
-	
-	protected void die() {
-		state.killEntity(this);
-	}
-	
+
 }

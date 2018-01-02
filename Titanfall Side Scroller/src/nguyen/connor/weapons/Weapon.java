@@ -25,6 +25,7 @@ public abstract class Weapon extends Mob {
 	protected double aimX, aimY;
 	protected GameState state;
 	protected int type;
+	protected double dmg;
 	
 	public void render(Graphics brush) {
 		super.render((Graphics2D) brush); 
@@ -55,7 +56,7 @@ public abstract class Weapon extends Mob {
 			canFire = false;
 			//double angle = Math.atan2(x - aimX, y - aimY);
 			double angle = Math.atan2(y - aimY, x - aimX);
-			Bullet b = new Bullet(bulletSprite, x, y, angle, bulletSpeed, state);
+			Bullet b = new Bullet(bulletSprite, x, y, angle, bulletSpeed, dmg, state);
 			holder.addBullet(b);
 			return true;
 		}

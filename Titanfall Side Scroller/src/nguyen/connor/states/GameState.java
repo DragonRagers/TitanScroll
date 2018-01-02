@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import nguyen.connor.Game;
 import nguyen.connor.entities.Entity;
 import nguyen.connor.entities.Player;
+import nguyen.connor.entities.TestDummy;
 import nguyen.connor.input.MouseInput;
 import nguyen.connor.rendering.textures.Sprite;
 import nguyen.connor.rendering.textures.SpriteSheet;
@@ -23,7 +24,8 @@ public class GameState implements State {
 	public void init() {
 		entities = new ArrayList<Entity>();
 		tiles = new ArrayList<Tile>();
-		new Player(new Sprite("pilot"), 100, 100, this);
+		new Player(100, 100, this);
+		new TestDummy(500, 100, this);
 		float x = 0;
 		float y = Game.HEIGHT - 300;
 		for (int c = 0; c < 20; c++) {
@@ -48,8 +50,8 @@ public class GameState implements State {
 	}
 
 	public void tick(StateManager stateManager) {
-		for (Entity e : (ArrayList<Entity>) entities.clone()) {
-			e.tick();
+		for (int c = 0; c < entities.size(); c++) {
+			entities.get(c).tick();
 		}
 	}
 
@@ -73,6 +75,10 @@ public class GameState implements State {
 
 	public void addEntity(Entity entity) {
 		entities.add(entity);
+	}
+	
+	public ArrayList<Entity> getEntites() {
+		return entities;
 	}
 	
 	public ArrayList<Tile> getTiles() {
