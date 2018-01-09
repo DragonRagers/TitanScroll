@@ -21,7 +21,6 @@ public abstract class Mob extends Entity {
 
 	public void tick() {
 		move();
-		fall();
 	}
 
 	public void move() {
@@ -31,6 +30,7 @@ public abstract class Mob extends Entity {
 		if (!hasVerticalCollision()) {
 			y += dy;
 		}
+		fall();
 
 	}
 
@@ -42,13 +42,13 @@ public abstract class Mob extends Entity {
 				falling = false;
 				canJump = true;
 				return true;
+			} else if (getTop().intersects(t.getBottom()) && dy < 0) {
+				dy = 0;
+				y -= 4;
+				return true;
 			} else {
 				falling = true;
 				canJump = false;
-			}
-			if (getTop().intersects(t.getBottom()) && dy < 0) {
-				dy = 0;
-				return true;
 			}
 		}
 		return false;

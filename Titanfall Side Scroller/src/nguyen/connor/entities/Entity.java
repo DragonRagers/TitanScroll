@@ -30,7 +30,7 @@ public abstract class Entity {
 	
 	public void render(Graphics2D brush) {
 		sprite.render(brush, x, y);
-		//drawHitBox(brush);
+		drawHitBox(brush);
 	}
  
 	public double getX() {

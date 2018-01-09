@@ -25,18 +25,24 @@ public class GameState implements State {
 		entities = new ArrayList<Entity>();
 		tiles = new ArrayList<Tile>();
 		new Player(100, 100, this);
-		new TestDummy(500, 100, this);
+		new TestDummy(200, Game.HEIGHT - 428, this);
 		float x = 0;
 		float y = Game.HEIGHT - 300;
 		for (int c = 0; c < 20; c++) {
 			tiles.add(new Tile(new Sprite(new SpriteSheet(new Texture("terrain"), 64), 0, 0), x, y));
 			x += 64;
 		}
-		x=64*6;
-		y = Game.HEIGHT- 364;
+		x=64*3;
+		y = Game.HEIGHT- (300 + 64);
 		for (int c = 0; c < 20; c++) {
 			tiles.add(new Tile(new Sprite(new SpriteSheet(new Texture("terrain"), 64), 0, 0), x, y));
 			x += 128;
+		}
+		x = 64*5;
+		y = Game.HEIGHT - (300 + 64 * 3);
+		for (int c = 0; c < 20; c++) {
+			tiles.add(new Tile(new Sprite(new SpriteSheet(new Texture("terrain"), 64), 0, 0), x, y));
+			x += 64;
 		}
 	}
 

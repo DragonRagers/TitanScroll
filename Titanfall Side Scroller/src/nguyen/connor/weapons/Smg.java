@@ -7,19 +7,19 @@ import nguyen.connor.entities.Mob;
 import nguyen.connor.rendering.textures.Sprite;
 import nguyen.connor.states.GameState;
 
-public class Pistol extends Weapon {
-	public Pistol(double x, double y, GameState state) {
-		super(new Sprite("pistol"), x, y, state);
-		fireRate = 45;
-		bulletSpeed = 40;
+public class Smg extends Weapon {
+	public Smg(double x, double y, GameState state) {
+		super(new Sprite("smg"), x, y, state);
+		fireRate = 10;
+		bulletSpeed = 35;
 		tickCount = 0;
 		bulletSprite = new Sprite("player bullet");
 		this.state = state;
-		type = 0;
-		dmg = 50;
+		type = 1;
+		dmg = 12;
 	}
 	
-	public Pistol(Mob holder, GameState state) {
+	public Smg(Mob holder, GameState state) {
 		this(holder.getX(), holder.getY(), state);
 		this.holder = holder;
 		equipped = true;
