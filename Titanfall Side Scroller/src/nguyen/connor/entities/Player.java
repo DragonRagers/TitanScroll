@@ -18,14 +18,26 @@ public class Player extends Mob {
 
 	protected boolean canDoubleJump = true;
 	protected Weapon curWeapon, secWeapon;
-
+	
 	public Player(double x, double y, GameState state) {
-		super(new Sprite("pilot"), x, y, state);
+		super(new Sprite("pilotR"), x, y, state);
+		direction = 0;
+		sprites.add(new Sprite("pilotL"));
 		maxDy = 7;
 		curWeapon = new Smg(this, state);
 		secWeapon = new Pistol(this, state);
 		secWeapon.equipped = false;
 		enemy = false;
+	}
+	
+	@Override
+	public void render(Graphics2D brush) {
+		if (direction == 0) {
+			spriteTo(0);
+		} else if (direction == 1) {
+			spriteTo(1);;
+		}
+		super.render(brush);
 	}
 
 	public void tick() {
@@ -39,9 +51,11 @@ public class Player extends Mob {
 		}
 		if (KeyInput.isDown(KeyEvent.VK_D)) {
 			dx = 3;
+			direction = 0;
 		}
 		if (KeyInput.isDown(KeyEvent.VK_A)) {
 			dx = -3;
+			direction = 1;
 		} 
 
 		if (KeyInput.wasReleased(KeyEvent.VK_D) || KeyInput.wasReleased(KeyEvent.VK_A)) {
@@ -56,7 +70,6 @@ public class Player extends Mob {
 		if (KeyInput.wasPressed(KeyEvent.VK_Q)) {
 			weapSwitch();
 		}
-
 		if (KeyInput.wasPressed(KeyEvent.VK_E)) {
 			for (Entity e : state.getEntites()) {
 				if (e instanceof Weapon && !e.equals(curWeapon) && !e.equals(secWeapon) && getBounds().intersects(e.getBounds())) {
@@ -111,5 +124,4 @@ public class Player extends Mob {
 			canDoubleJump = false;
 		}
 	}
-
 }

@@ -14,11 +14,18 @@ public abstract class Mob extends Entity {
 	protected boolean falling = true;
 	protected boolean canJump = false;
 	protected ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	protected ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+	protected int direction;
 	
 	public Mob(Sprite sprite, double x, double y, GameState state) {
 		super(sprite, x, y, state);
+		sprites.add(sprite);
 	}
 
+	public void spriteTo(int c) {
+		sprite = sprites.get(c);
+	}
+	
 	public void tick() {
 		move();
 	}
